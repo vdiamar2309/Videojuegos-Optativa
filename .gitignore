@@ -1,3 +1,9 @@
+# .gitignore file created for free with Tower (https://www.git-tower.com/)
+# For suggestions or improvements please contact us using support@git-tower.com
+# Generated on 2026-10-26
+# Includes: intellij, java
+
+### Universal ###
 # Common files that should be ignored in all projects
 
 # Logs
@@ -121,4 +127,3 @@ build/
 .apt_generated/
 .factorypath
 .springBeans
-config.properties

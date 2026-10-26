@@ -1,4 +1,4 @@
-package reader;
+package utils;
 
 import exceptions.VideojuegoException;
 
@@ -31,14 +31,14 @@ public class PropertiesReader {
     }
 
     public static PropertiesReader getInstance() throws VideojuegoException {
-        if (instance == null){
+        if (instance == null) {
             instance = new PropertiesReader();
         }
 
         return instance;
     }
 
-    public String get(String propiedad){
+    public String get(String propiedad) {
         return p.getProperty(propiedad);
     }
 }

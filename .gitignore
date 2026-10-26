@@ -127,4 +127,4 @@ build/
 .apt_generated/
 .factorypath
 .springBeans
-.config_properties
+.config.properties

@@ -1,5 +1,10 @@
 package model;
 
+import exceptions.VideojuegoException;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Videojuego {
@@ -62,6 +67,21 @@ public class Videojuego {
 
     public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
+    }
+
+
+
+    public void borrar(int idVideojuegos) throws VideojuegoException {
+        String sql = "DELETE FROM videojuegos WHERE id = ?";
+        try (Connection con = ConexionDB.ConexionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, idVideojuegos);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new VideojuegoException("Error al borrar cliente", e);
+        }
     }
 
     @Override

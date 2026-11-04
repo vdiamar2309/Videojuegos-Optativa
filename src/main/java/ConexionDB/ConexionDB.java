@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 
 
-public class ConexionDB {
+public class  ConexionDB {
     /**
      * Devuelve un objeto Connection listo para ser usado.
      * Lanza SQLException para que el DAO decida cómo gestionar el

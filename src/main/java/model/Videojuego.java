@@ -5,7 +5,6 @@ import exceptions.VideojuegoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class Videojuego {
     private static int  nextId = 1;

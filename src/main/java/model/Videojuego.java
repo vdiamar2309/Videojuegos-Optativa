@@ -1,9 +1,11 @@
 package model;
 
+import ConexionDB.ConexionDB;
 import exceptions.VideojuegoException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Videojuego {
@@ -72,7 +74,7 @@ public class Videojuego {
 
     public void borrar(int idVideojuegos) throws VideojuegoException {
         String sql = "DELETE FROM videojuegos WHERE id = ?";
-        try (Connection con = ConexionDB.ConexionDB.getConnection();
+        try (Connection con = ConexionDB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, idVideojuegos);
@@ -82,7 +84,21 @@ public class Videojuego {
             throw new VideojuegoException("Error al borrar cliente", e);
         }
     }
-
+    public void buscarVideojuegoPorTitulo(String titulo) throws VideojuegoException {
+        String sql = "SELECT * FROM videojuego WHERE title Like ?";
+        try (Connection con = ConexionDB.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql)){
+          ps.setString(1, "%" + titulo + "%");
+          try (ResultSet rs = ps.executeQuery()){
+              while (rs.next()){
+                  System.out.println(rs.getString("titulo"));
+              }
+              //da igual eso es el ide pero no da fallo de sintaxis porque es un string
+          }
+        }catch (SQLException e){
+            throw new VideojuegoException("Error al encontrar el videojuego", e);
+        }
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -5,7 +5,6 @@ import exceptions.VideojuegoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class Videojuego {
     private static int  nextId = 1;
@@ -13,10 +12,10 @@ public class Videojuego {
     private String titulo;
     private String genero;
     private String plataforma;
-    private LocalDate anno;
-    private double valoracion;
+    private int anno;
+    private int valoracion;
 
-    public Videojuego(String titulo, String genero, String plataforma, LocalDate anno, double valoracion) {
+    public Videojuego(String titulo, String genero, String plataforma, int anno, int valoracion) {
         this.id = nextId ++;
         this.titulo = titulo;
         this.genero = genero;
@@ -53,19 +52,19 @@ public class Videojuego {
         this.plataforma = plataforma;
     }
 
-    public LocalDate getAnno() {
+    public int getAnno() {
         return anno;
     }
 
-    public void setAnno(LocalDate anno) {
+    public void setAnno(int anno) {
         this.anno = anno;
     }
 
-    public double getValoracion() {
+    public int getValoracion() {
         return valoracion;
     }
 
-    public void setValoracion(double valoracion) {
+    public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
 

@@ -122,6 +122,7 @@ public class Videojuego {
             ps.setInt(5, videojuego.getAnno());
             ps.setInt(6, videojuego.getValoracion());
             ps.executeUpdate();
+
         } catch (SQLException e) {
             throw new VideojuegoException("Error al insertar el videojuego", e);
         }

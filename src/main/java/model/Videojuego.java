@@ -129,6 +129,7 @@ public class Videojuego {
      * */
     public void insertar(Videojuego videojuego) throws VideojuegoException {
         String sql = "INSERT into videojuegos (id, titulo, genero, plataforma, anio, valoracion) VALUES (?, ?, ?, ?, ?, ?)";
+
         try (Connection connection = ConexionDB.getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, videojuego.getId());
             ps.setString(2, videojuego.getTitulo());
@@ -137,6 +138,7 @@ public class Videojuego {
             ps.setInt(5, videojuego.getAnno());
             ps.setInt(6, videojuego.getValoracion());
             ps.executeUpdate();
+
         } catch (SQLException e) {
             throw new VideojuegoException("Error al insertar el videojuego", e);
         }

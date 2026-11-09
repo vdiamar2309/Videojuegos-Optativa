@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
 
+/** Carga y expone las propiedades de conexión definidas en config.properties. */
 public class PropertiesReader {
     private final static Path file = Path.of("config.properties");
     private Properties p;
@@ -30,6 +31,7 @@ public class PropertiesReader {
         }
     }
 
+    /** Devuelve la instancia compartida y la crea al primer acceso. */
     public static PropertiesReader getInstance() throws VideojuegoException {
         if (instance == null) {
             instance = new PropertiesReader();

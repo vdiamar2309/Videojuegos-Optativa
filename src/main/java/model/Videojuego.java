@@ -80,7 +80,7 @@ public class Videojuego {
      * @param idVideojuegos el id del videojuego que se va a borrar
      * @throws VideojuegoException si no se encuentra el videojuego cuando busca el id
      */
-    public void borrar(int idVideojuegos) throws VideojuegoException {
+    public static void borrar(int idVideojuegos) throws VideojuegoException {
         String sql = "DELETE FROM videojuegos WHERE id = ?";
         try (Connection con = ConexionDB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -142,7 +142,7 @@ public class Videojuego {
      * @param videojuego el videojuego que se va a insertar
      *
      */
-    public void insertar(Videojuego videojuego) throws VideojuegoException {
+    public static void insertar(Videojuego videojuego) throws VideojuegoException {
         String sql = "INSERT INTO videojuegos_db.videojuegos " +
                 "(titulo, genero, plataforma, anio, valoracion) " +
                 "VALUES (?, ?, ?, ?, ?)";

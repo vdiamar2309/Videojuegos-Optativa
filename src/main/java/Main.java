@@ -3,7 +3,7 @@ import model.Videojuego;
 import utils.MiEntradaSalida;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws VideojuegoException {
         boolean salir = false;
         while (!salir) {
             menu();
@@ -24,7 +24,11 @@ public class Main {
                     break;
                 case 2:
                     String tituloBuscar = MiEntradaSalida.solicitarCadena("Introduce el título: ");
-                    Videojuego.buscarVideojuegoPorTitulo(tituloBuscar);
+                    try {
+                        Videojuego.buscarVideojuego(tituloBuscar);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 3:
                     int id = MiEntradaSalida.solicitarEntero("Introduce el id: ");

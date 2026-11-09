@@ -4,6 +4,7 @@ import utils.PropertiesReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+/** Centraliza la creación de conexiones a la base de datos usando la configuración del proyecto. */
 public class ConexionDB {
     /**
      * Devuelve un objeto Connection listo para ser usado.

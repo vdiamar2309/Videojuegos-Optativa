@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Representa un videojuego del catálogo y permite gestionar sus datos en la base de datos.
+ */
 public class Videojuego {
     private static int  nextId = 1;
     private int id;
@@ -71,7 +74,11 @@ public class Videojuego {
     }
 
 
-
+    /**
+     *  Elimina de la base de datos el videojuego identificado por su ID.
+     * @param idVideojuegos el id del videojuego que se va a borrar
+     * @throws VideojuegoException si no se encuentra el videojuego cuando busca el id
+     */
     public void borrar(int idVideojuegos) throws VideojuegoException {
         String sql = "DELETE FROM videojuegos WHERE id = ?";
         try (Connection con = ConexionDB.getConnection();
@@ -84,6 +91,12 @@ public class Videojuego {
             throw new VideojuegoException("Error al borrar cliente", e);
         }
     }
+
+    /**
+     * Busca títulos que contengan el texto indicado e imprime las coincidencias.
+     * @param titulo del videojuego que se va a buscar
+     * @throws VideojuegoException si no encuentra el videojuego
+     */
     public void buscarVideojuegoPorTitulo(String titulo) throws VideojuegoException {
         String sql = "SELECT * FROM videojuego WHERE title Like ?";
         try (Connection con = ConexionDB.getConnection();
@@ -93,7 +106,6 @@ public class Videojuego {
               while (rs.next()){
                   System.out.println(rs.getString("titulo"));
               }
-              //da igual eso es el ide pero no da fallo de sintaxis porque es un string
           }
         }catch (SQLException e){
             throw new VideojuegoException("Error al encontrar el videojuego", e);
@@ -112,6 +124,9 @@ public class Videojuego {
                 return sb.toString();
     }
 
+    /** Inserta en la base de datos los datos del videojuego recibido.
+     * @param videojuego el videojuego que se va a insertar
+     * */
     public void insertar(Videojuego videojuego) throws VideojuegoException {
         String sql = "INSERT into videojuegos (id, titulo, genero, plataforma, anio, valoracion) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = ConexionDB.ConexionDB.getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
